@@ -6,7 +6,7 @@
  * Time: 10:53
  */
 
-namespace App\Http\Controllers\meterlogin;
+namespace App\Http\Controllers\frontend\meterlogin;
 
 
 use App\Http\Controllers\Controller;
@@ -15,14 +15,14 @@ class MeterloginController extends Controller
 {
     public function login()
     {
-        return view('meterlogin/login');
+        return view('frontend/meterlogin/login');
     }
     public function register()
     {
-        return view('meterlogin/register');
+        return view('frontend/meterlogin/register');
     }
     public function self_info()
     {
-        return view('meterlogin/self_info');
+        return view('frontend/meterlogin/self_info');
     }
 }
