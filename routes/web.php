@@ -30,7 +30,17 @@ Route::get('hello/up/id/{id}','Hello\HelloController@up');
 //修改成功 跳的页面
 Route::post('hello/up_do','Hello\HelloController@up_do');
 
+//测试数据
+//展示添加页面
+Route::get('user/index','User\UserController@index');
+//提交数据路径
+Route::post('user/add','User\UserController@add');
+//展示数据
+Route::get('user/select','User\UserController@select');
+
 //{小米商城}
+//发送邮件地址
+Route::get('Mail/send','MailController@send');
 //商品首页
 Route::get('frontend/metershop/index','frontend\Metershop\metershopController@index');
 //商品列表页
@@ -40,8 +50,10 @@ Route::get('frontend/metershop/wiew','frontend\Metershop\metershopController@wie
 
 //用户登录
 Route::get('frontend/meterlogin/login','frontend\Meterlogin\meterloginController@login');
+Route::post('frontend/meterlogin/login_do','frontend\Meterlogin\meterloginController@login_do');
 //用户注册
 Route::get('frontend/meterlogin/register','frontend\Meterlogin\meterloginController@register');
+Route::post('frontend/meterlogin/register_do','frontend\Meterlogin\meterloginController@register_do');
 //用户个人展示
 Route::get('frontend/meterlogin/self_info','frontend\Meterlogin\meterloginController@self_info');
 
