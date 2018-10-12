@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/login.css') }}">
 </head>
 <body>
-<form  method="post" action="register_do">
+<form  method="post" action="registerDo">
     @csrf
     <div class="regist">
         <div class="regist_center">
@@ -18,13 +18,13 @@
                 <div class="xian center"></div>
             </div>
             <div class="regist_main center">
-                <div class="username">用&nbsp;&nbsp;户&nbsp;&nbsp;名:&nbsp;&nbsp;<input class="shurukuang" type="email" id="email" name="email" placeholder="请输入你的邮箱"/>
+                <div class="username">用&nbsp;&nbsp;户&nbsp;&nbsp;名:&nbsp;&nbsp;<input class="shurukuang" type="email" id="email" name="name" placeholder="请输入你的邮箱"/>
                     <span id="email1" style="color: red"></span></div>
                 <div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;<input class="shurukuang" type="password" id="password" name="password" placeholder="请输入你的密码"/><span id="s_password" style="color: red"></span></div>
 
                 <div class="username">确认密码:&nbsp;&nbsp;<input class="shurukuang" type="password" name="repassword" id="repassword" placeholder="请确认你的密码"/>
                     <span id="s_repassword" style="color: red"></span></div>
-                <div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;<input class="shurukuang" type="text" id="tel" name="tel" placeholder="请填写正确的手机号"/>
+                <div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;<input class="shurukuang" type="text" id="tel" name="r_phone" placeholder="请填写正确的手机号"/>
                     <span id="s_tel" style="color: red"></span></div>
                 <div class="username">
                     <div class="left fl">验&nbsp;&nbsp;证&nbsp;&nbsp;码:&nbsp;&nbsp;<input class="yanzhengma" type="text" name="captcha" placeholder="请输入验证码"/></div>
@@ -78,12 +78,11 @@
     });
     //判断两次密码
     $("#repassword").blur(function(){
-        if($("#repassword").val()==$("#password").val())
-        {
+        if($("#repassword").val()==$("#password").val()){
+
             $("#s_repassword").text("两次密码一致");
             return true;
-        }else if($("#repassword").val()=='')
-        {
+        }else if($("#repassword").val()==''){
             $("#s_repassword").text("确认密码不能为空");
             return false;
         }else{
@@ -93,8 +92,7 @@
     });
     //判断手机号
     $("#tel").blur(function(){
-       if($("#tel").val()!=$("#tel").val().match(/^[1][3,4,5,7,8][0-9]{9}$/))
-       {
+       if($("#tel").val()!=$("#tel").val().match(/^[1][3,4,5,7,8][0-9]{9}$/)){
            $("#s_tel").text("手机号不符合");
            return false;
        }else{
@@ -103,8 +101,7 @@
        }
     });
     $("#sub").click(function(){
-        if($("#tel").val()==false ||$("#repassword").val()==false ||$("#password").val()==false ||$("#username1").val()==false)
-        {
+        if($("#tel").val()==false ||$("#repassword").val()==false ||$("#password").val()==false ||$("#username1").val()==false){
             alert("您的信息还不完善");
             return false;
         }

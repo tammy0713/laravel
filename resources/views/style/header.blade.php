@@ -29,9 +29,16 @@
             <div class="gouwuche fr"><a href="{{url('frontend/metercart/cart')}}">购物车</a></div>
             <div class="fr">
                 <ul>
-                    <li><a href="{{url('frontend/meterlogin/login')}}" target="_blank">登录</a></li>
-                    <li>|</li>
-                    <li><a href="{{url('frontend/meterlogin/register')}}" target="_blank" >注册</a></li>
+                    @if(!Session()->has('msg'))
+                        <li><a href="{{url('frontend/meterlogin/login')}}" target="_blank">登录</a></li>
+                        <li>|</li>
+                        <li><a href="{{url('frontend/meterlogin/register')}}" target="_blank" >注册</a></li>
+                    @else
+                        <li>{{session('msg')['r_name']}}登录</li>
+                        <li>|</li>
+                        <li><a href="{{url('frontend/meterlogin/regDestroy')}}" target="_blank" >注销</a></li>
+                    @endif
+
                     <li>|</li>
                     <li><a href="">消息通知</a></li>
                 </ul>

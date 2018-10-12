@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Service\UserService;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Request;
+use Session;
+use App\Jobs\Test;
 
 class MeterloginController extends Controller
 {
@@ -13,9 +15,9 @@ class MeterloginController extends Controller
     {
         return view('frontend/meterlogin/login');
     }
-    public function self_info()
+    public function selfInfo()
     {
-        return view('frontend/meterlogin/self_info');
+        return view('frontend/meterlogin/selfInfo');
     }
     public function register()
     {
@@ -24,47 +26,70 @@ class MeterloginController extends Controller
     /*
      * 用户注册
      */
-    public function register_do(Request $request)
+    public function registerDo(Request $request)
    {
-     $resg_data=$request->input();
-       $rules=['captcha'=>'required|captcha'];
-     $validata=Validator::make($resg_data,$rules);
-     if($validata->fails())
-     {
-
-         return redirect('frontend/meterlogin/register');
-     }
-     $service=new UserService();
-     $res=$service->register_insert($resg_data);
-     if($res==true)
-       {
-           \Mail::send('email.code', [], function ($message) { $message->to(['583685877@qq.com'])->subject('欢迎加入');});
-           return redirect('frontend/meterlogin/login');
-       }else{
-          return redirect('frontend/meterlogin/register');
-     }
+       $resgData=$request->input();
+       $rules=[
+           'captcha'=>'required|captcha',
+           'name'=>'unique:login_register,r_name',
+           'r_phone'=>'unique:login_register,r_phone',
+       ];
+       $validata=Validator::make($resgData,$rules);
+       if(!$validata->fails()){
+           return view('msg.msg',['msg'=>'验证码错误','url'=>'register']);
+       }
+       $service=new UserService();
+       //调用注册添加的方法
+       $result=$service->registerInsert($resgData);
+       if($result) {
+           return redirect('frontend/metershop/index');
+        }
+       if($result==1) {
+           return view('msg.msg',['msg'=>'邮箱和手机号唯一','url'=>'register']);
+        }
+       if($result) {
+           return view('msg.msg',['msg'=>'信息添加失败','url'=>'register']);
+       }
    }
+    /*
+     * 用户退出
+     */
+    public function regDestroy()
+    {
+        $session = Session::forget('msg');
+        return redirect('frontend/meterlogin/register');
+    }
     /*
      * 登录
      */
-    public function login_do(Request $request)
+    public function loginDo(Request $request)
     {
-        $login_data=$request->input();
-        $rules=['captcha'=>'required|captcha'];
-        $validata=Validator::make($login_data,$rules);
-        if(!$validata->fails())
-        {
-            echo "验证码错误";die();
-            return redirect('frontend/meterlogin/login');
+        $loginData=$request->input();
+        //规则验证码
+        $rules=[
+            'captcha'=>'required|captcha',
+            'name'=>'unique:login_register,r_name',
+            'r_phone'=>'unique:login_register,r_phone',
+        ];
+        $validata=Validator::make($loginData,$rules);
+        if(!$validata->fails()){
+            return view('msg.msg',['msg'=>'验证码错误','url'=>'login']);
         }
-        $login_find_data = new UserService();
-        $find=$login_find_data->login_find($login_data);
-        if($find==true)
-        {
+        //实例化Service
+        $loginFindData = new UserService();
+        //调用查询数据方法
+        $find = $loginFindData->login1($loginData);
+        if($find == 4){
             return redirect('frontend/metershop/index');
-        }else{
-            echo "错误";die();
-            return redirect('frontend/meterlogin/login');
+        }
+        if($find == 1){
+            return view('msg.msg',['msg'=>'用户名或密码错误','url'=>'login']);
+        }
+        if($find == 2){
+            return view('msg.msg',['msg'=>'日志表添加错误','url'=>'login']);
+        }
+        if($find == 3){
+            return view('msg.msg',['msg'=>'密码错误','url'=>'login']);
         }
     }
 }

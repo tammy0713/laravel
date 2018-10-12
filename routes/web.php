@@ -50,12 +50,13 @@ Route::get('frontend/metershop/wiew','frontend\Metershop\metershopController@wie
 
 //用户登录
 Route::get('frontend/meterlogin/login','frontend\Meterlogin\meterloginController@login');
-Route::post('frontend/meterlogin/login_do','frontend\Meterlogin\meterloginController@login_do');
+Route::post('frontend/meterlogin/loginDo','frontend\Meterlogin\meterloginController@loginDo');
+Route::get('frontend/meterlogin/regDestroy','frontend\Meterlogin\meterloginController@regDestroy');
 //用户注册
 Route::get('frontend/meterlogin/register','frontend\Meterlogin\meterloginController@register');
-Route::post('frontend/meterlogin/register_do','frontend\Meterlogin\meterloginController@register_do');
+Route::post('frontend/meterlogin/registerDo','frontend\Meterlogin\meterloginController@registerDo');
 //用户个人展示
-Route::get('frontend/meterlogin/self_info','frontend\Meterlogin\meterloginController@self_info');
+Route::get('frontend/meterlogin/selfInfo','frontend\Meterlogin\meterloginController@selfInfo');
 
 //用户购物车
 Route::get('frontend/metercart/cart','frontend\Metercart\metercartController@cart');
