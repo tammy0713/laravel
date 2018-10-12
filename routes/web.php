@@ -30,22 +30,35 @@ Route::get('hello/up/id/{id}','Hello\HelloController@up');
 //修改成功 跳的页面
 Route::post('hello/up_do','Hello\HelloController@up_do');
 
+//测试数据
+//展示添加页面
+Route::get('user/index','User\UserController@index');
+//提交数据路径
+Route::post('user/add','User\UserController@add');
+//展示数据
+Route::get('user/select','User\UserController@select');
+
 //{小米商城}
+//发送邮件地址
+Route::get('Mail/send','MailController@send');
 //商品首页
-Route::get('metershop/index','Metershop\metershopController@index');
+Route::get('frontend/metershop/index','frontend\Metershop\metershopController@index');
 //商品列表页
-Route::get('metershop/show','Metershop\metershopController@show');
+Route::get('frontend/metershop/show','frontend\Metershop\metershopController@show');
 //商品详情页
-Route::get('metershop/wiew','Metershop\metershopController@wiew');
+Route::get('frontend/metershop/wiew','frontend\Metershop\metershopController@wiew');
 
 //用户登录
-Route::get('meterlogin/login','Meterlogin\meterloginController@login');
+Route::get('frontend/meterlogin/login','frontend\Meterlogin\meterloginController@login');
+Route::post('frontend/meterlogin/loginDo','frontend\Meterlogin\meterloginController@loginDo');
+Route::get('frontend/meterlogin/regDestroy','frontend\Meterlogin\meterloginController@regDestroy');
 //用户注册
-Route::get('meterlogin/register','Meterlogin\meterloginController@register');
+Route::get('frontend/meterlogin/register','frontend\Meterlogin\meterloginController@register');
+Route::post('frontend/meterlogin/registerDo','frontend\Meterlogin\meterloginController@registerDo');
 //用户个人展示
-Route::get('meterlogin/self_info','Meterlogin\meterloginController@self_info');
+Route::get('frontend/meterlogin/selfInfo','frontend\Meterlogin\meterloginController@selfInfo');
 
 //用户购物车
-Route::get('metercart/cart','Metercart\metercartController@cart');
+Route::get('frontend/metercart/cart','frontend\Metercart\metercartController@cart');
 //用户订单
-Route::get('metercart/order','Metercart\metercartController@order');
+Route::get('frontend/metercart/order','frontend\Metercart\metercartController@order');

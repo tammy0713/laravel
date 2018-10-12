@@ -27,7 +27,7 @@ class HelloController extends Controller
         {
             return redirect('hello/select');
         }else{
-            echo '添加失败';
+            return redirect('hello/select');
         }
     }
     public function select()
@@ -45,7 +45,7 @@ class HelloController extends Controller
         {
             return redirect('hello/select');
         }else{
-            echo "删除失败";
+            return redirect('hello/select');
         }
     }
     public function up($id)
@@ -56,13 +56,17 @@ class HelloController extends Controller
     public function up_do(Request $request)
     {
        $data=$request->post();
-        unset($data['_token']);
-        $res= DB::table('hello')->update($data);
+        $id=$data['id'];
+        $res=[
+          'name'=>$data['name'],
+            'pwd'=>$data['pwd'],
+        ];
+        $res= DB::table('hello')->where('id',$id)->update($res);
         if($res)
         {
             return redirect('hello/select');
         }else{
-            echo '修改失败';
+            return redirect('hello/up');
         }
     }
 }

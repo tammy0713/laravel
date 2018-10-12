@@ -5,7 +5,7 @@
     <title>Document</title>
 </head>
 <body>
-<form action="{{}}" method="post">
+<form action="{{url('hello/up_do')}}" method="post">
     <table>
         <tr>
             {{csrf_field()}}
