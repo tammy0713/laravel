@@ -15,6 +15,6 @@ class ExamController extends Controller
 {
    public function index()
    {
-       echo "1";
+       echo "vfbgfx1";
    }
 }
