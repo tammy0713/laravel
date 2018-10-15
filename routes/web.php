@@ -49,3 +49,7 @@ Route::get('frontend/meterlogin/self_info','frontend\Meterlogin\meterloginContro
 Route::get('frontend/metercart/cart','frontend\Metercart\metercartController@cart');
 //用户订单
 Route::get('frontend/metercart/order','frontend\Metercart\metercartController@order');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
