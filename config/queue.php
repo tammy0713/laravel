@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('QUEUE_CONNECTION', 'sync'),
+    'default' => env('QUEUE_DRIVE', 'sync'),
 
     /*
     |--------------------------------------------------------------------------
@@ -30,10 +30,12 @@ return [
 
     'connections' => [
 
+        //同步队列
         'sync' => [
             'driver' => 'sync',
         ],
 
+        //以数据库为中间转存
         'database' => [
             'driver' => 'database',
             'table' => 'jobs',
