@@ -4,10 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "f91a1c7998a7c3c386e94a2098d30abe",
-
-  
+    "content-hash": "89ce1a1514baf3454e41a26d09484b44",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -934,16 +931,16 @@
         },
         {
             "name": "mews/captcha",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mewebstudio/captcha.git",
-                "reference": "be032d25c6637e22b374d7e0846c2410253795d3"
+                "reference": "56b044e650a7f9b234f2262b9e377cfb66b94f03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mewebstudio/captcha/zipball/be032d25c6637e22b374d7e0846c2410253795d3",
-                "reference": "be032d25c6637e22b374d7e0846c2410253795d3",
+                "url": "https://api.github.com/repos/mewebstudio/captcha/zipball/56b044e650a7f9b234f2262b9e377cfb66b94f03",
+                "reference": "56b044e650a7f9b234f2262b9e377cfb66b94f03",
                 "shasum": ""
             },
             "require": {
@@ -997,7 +994,7 @@
                 "laravel5 Captcha",
                 "laravel5 Security"
             ],
-            "time": "2018-09-19T18:08:02+00:00"
+            "time": "2018-10-05T19:58:36+00:00"
         },
         {
             "name": "monolog/monolog",
